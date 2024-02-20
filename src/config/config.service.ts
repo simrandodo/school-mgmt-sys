@@ -1,15 +1,19 @@
+import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { isNil } from 'lodash';
 
-
+@Injectable()
 export class ApiConfigService {
   constructor(private configService: ConfigService) {}
 
   private get(key: string): string {
-    const value = this.configService.get(key);
+    
+    const value = this.configService?.get(key);
+    console.log(value);
     if (isNil(value)) {
       throw new Error(key + ' environment variable does not set');
     }
+
     return value;
   }
   private getString(key: string): string {

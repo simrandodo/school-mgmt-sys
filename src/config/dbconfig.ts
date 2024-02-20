@@ -10,6 +10,7 @@ export class DbConfig {
   constructor(private readonly configService: ConfigService) {}
 
   private get(key: string): string {
+  //  console.log(key)
     const value = this.configService.get(key);
 
     if (isNil(value)) {
